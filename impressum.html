@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,6 +18,22 @@
                 <span class="logo-mark">M</span>
                 <span class="logo-text">Michelle Deerberg</span>
             </a>
+
+            <div class="lang-selector" id="langSelector">
+                <button class="lang-btn lang-btn--active" data-lang="de" aria-label="Deutsch">
+                    <svg class="lang-flag" width="20" height="14" viewBox="0 0 20 14"><rect width="20" height="4.67" fill="#000"/><rect y="4.67" width="20" height="4.67" fill="#DD0000"/><rect y="9.33" width="20" height="4.67" fill="#FFCC00"/></svg>
+                    <span class="lang-label">Deutsch</span>
+                </button>
+                <button class="lang-btn" data-lang="en" aria-label="English">
+                    <svg class="lang-flag" width="20" height="14" viewBox="0 0 20 14"><rect width="20" height="14" fill="#012169"/><path d="M0,0 L20,14 M20,0 L0,14" stroke="#FFF" stroke-width="2.8"/><path d="M0,0 L20,14 M20,0 L0,14" stroke="#C8102E" stroke-width="1.4"/><rect x="8" width="4" height="14" fill="#FFF"/><rect y="5" width="20" height="4" fill="#FFF"/><rect x="9" width="2" height="14" fill="#C8102E"/><rect y="5.5" width="20" height="3" fill="#C8102E"/></svg>
+                    <span class="lang-label">English</span>
+                </button>
+                <button class="lang-btn" data-lang="es" aria-label="Español">
+                    <svg class="lang-flag" width="20" height="14" viewBox="0 0 20 14"><rect width="20" height="3.5" fill="#AA151B"/><rect y="3.5" width="20" height="7" fill="#F1BF00"/><rect y="10.5" width="20" height="3.5" fill="#AA151B"/></svg>
+                    <span class="lang-label">Español</span>
+                </button>
+            </div>
+
             <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
                 <span class="hamburger__line"></span>
                 <span class="hamburger__line"></span>
@@ -25,11 +41,12 @@
             </button>
             <nav class="nav" id="nav" role="navigation">
                 <ul class="nav__list">
-                    <li><a href="index.html" class="nav__link">Home</a></li>
-                    <li><a href="index.html#services" class="nav__link">Services</a></li>
-                    <li><a href="index.html#about" class="nav__link">About</a></li>
-                    <li><a href="index.html#contact" class="nav__link">Contact</a></li>
+                    <li><a href="index.html" class="nav__link" data-i18n="nav_home">Startseite</a></li>
+                    <li><a href="index.html#services" class="nav__link" data-i18n="nav_services">Leistungen</a></li>
+                    <li><a href="index.html#about" class="nav__link" data-i18n="nav_about">Über mich</a></li>
+                    <li><a href="index.html#contact" class="nav__link" data-i18n="nav_contact">Kontakt</a></li>
                 </ul>
+                <div class="lang-selector lang-selector--mobile" id="langSelectorMobile"></div>
             </nav>
         </div>
     </header>
@@ -37,22 +54,89 @@
     <!-- ============ PAGE CONTENT ============ -->
     <main class="legal-page">
         <div class="container">
-            <h1 class="legal-page__title">Impressum</h1>
-            <p class="legal-page__subtitle">Legal disclosure pursuant to &sect; 5 TMG (German Telemedia Act)</p>
+            <h1 class="legal-page__title" data-i18n="impressum_title">Impressum</h1>
+            <p class="legal-page__subtitle" data-i18n="impressum_subtitle">Angaben gemäß § 5 TMG</p>
 
-            <div class="legal-page__content">
+            <!-- GERMAN (legally binding, default) -->
+            <div class="legal-page__content" data-lang-content="de">
+                <section class="legal-section">
+                    <h2>Diensteanbieter</h2>
+                    <p>
+                        Michelle Deerberg<br>
+                        Motivationsrednerin<br>
+                        Musterstra&szlig;e 42<br>
+                        35396 Gie&szlig;en<br>
+                        Deutschland
+                    </p>
+                </section>
+                <section class="legal-section">
+                    <h2>Kontakt</h2>
+                    <p>
+                        Telefon: +1 (555) 123-4567<br>
+                        E-Mail: <a href="mailto:hello@michelledeerberg.com">hello@michelledeerberg.com</a><br>
+                        Website: <a href="index.html">www.michelledeerberg.com</a>
+                    </p>
+                </section>
+                <section class="legal-section">
+                    <h2>Umsatzsteuer-ID</h2>
+                    <p>
+                        Umsatzsteuer-Identifikationsnummer gem&auml;&szlig; &sect; 27a UStG:<br>
+                        DE XXXXXXXXX
+                    </p>
+                    <p>
+                        Steuernummer: XXX/XXXX/XXXX<br>
+                        Finanzamt Gie&szlig;en
+                    </p>
+                </section>
+                <section class="legal-section">
+                    <h2>Berufliche Angaben</h2>
+                    <p>
+                        Beruf: Motivationsrednerin<br>
+                        Zust&auml;ndige Beh&ouml;rde: Entf&auml;llt (Freiberufliche T&auml;tigkeit)
+                    </p>
+                </section>
+                <section class="legal-section">
+                    <h2>Verantwortlich f&uuml;r den Inhalt</h2>
+                    <p>
+                        Verantwortlich gem&auml;&szlig; &sect; 18 Abs. 2 MStV:<br>
+                        Michelle Deerberg<br>
+                        Musterstra&szlig;e 42<br>
+                        35396 Gie&szlig;en<br>
+                        Deutschland
+                    </p>
+                </section>
+                <section class="legal-section">
+                    <h2>Streitschlichtung</h2>
+                    <p>Die Europ&auml;ische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr</a></p>
+                    <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+                </section>
+                <section class="legal-section">
+                    <h2>Haftung f&uuml;r Inhalte</h2>
+                    <p>Als Diensteanbieter sind wir gem&auml;&szlig; &sect; 7 Abs.1 TMG f&uuml;r eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach &sect;&sect; 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, &uuml;bermittelte oder gespeicherte fremde Informationen zu &uuml;berwachen.</p>
+                    <p>Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unber&uuml;hrt. Eine diesbez&uuml;gliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung m&ouml;glich.</p>
+                </section>
+                <section class="legal-section">
+                    <h2>Haftung f&uuml;r Links</h2>
+                    <p>Unser Angebot enth&auml;lt Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. F&uuml;r die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.</p>
+                </section>
+                <section class="legal-section">
+                    <h2>Urheberrecht</h2>
+                    <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielf&auml;ltigung, Bearbeitung, Verbreitung und jede Art der Verwertung au&szlig;erhalb der Grenzen des Urheberrechtes bed&uuml;rfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.</p>
+                </section>
+            </div>
 
+            <!-- ENGLISH (courtesy translation) -->
+            <div class="legal-page__content" data-lang-content="en" style="display:none;">
                 <section class="legal-section">
                     <h2>Service Provider</h2>
                     <p>
                         Michelle Deerberg<br>
-                        Motivational Speaker &amp; Speaking Coach<br>
+                        Motivational Speaker<br>
                         Musterstra&szlig;e 42<br>
                         35396 Gie&szlig;en<br>
                         Germany
                     </p>
                 </section>
-
                 <section class="legal-section">
                     <h2>Contact</h2>
                     <p>
@@ -61,11 +145,10 @@
                         Website: <a href="index.html">www.michelledeerberg.com</a>
                     </p>
                 </section>
-
                 <section class="legal-section">
                     <h2>Tax Information</h2>
                     <p>
-                        VAT Identification Number pursuant to &sect; 27a UStG (German VAT Act):<br>
+                        VAT Identification Number pursuant to &sect; 27a UStG:<br>
                         DE XXXXXXXXX
                     </p>
                     <p>
@@ -73,55 +156,112 @@
                         Tax Office: Finanzamt Gie&szlig;en
                     </p>
                 </section>
-
                 <section class="legal-section">
                     <h2>Professional Information</h2>
                     <p>
-                        Profession: Motivational Speaker, Public Speaking Coach<br>
-                        Professional designation: Certified Speaking Professional (CSP)<br>
-                        Competent authority: N/A (Freiberufler / Freelance profession)
+                        Profession: Motivational Speaker<br>
+                        Competent authority: N/A (Freelance profession)
                     </p>
                 </section>
-
                 <section class="legal-section">
                     <h2>Responsible for Content</h2>
                     <p>
-                        Responsible for content pursuant to &sect; 18 Abs. 2 MStV:<br>
+                        Responsible pursuant to &sect; 18 para. 2 MStV:<br>
                         Michelle Deerberg<br>
                         Musterstra&szlig;e 42<br>
                         35396 Gie&szlig;en<br>
                         Germany
                     </p>
                 </section>
-
                 <section class="legal-section">
                     <h2>Dispute Resolution</h2>
                     <p>The European Commission provides a platform for online dispute resolution (ODR): <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr</a></p>
                     <p>We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board.</p>
                 </section>
-
                 <section class="legal-section">
                     <h2>Liability for Content</h2>
-                    <p>As a service provider, we are responsible for our own content on these pages in accordance with &sect; 7 para. 1 TMG (German Telemedia Act). According to &sect;&sect; 8 to 10 TMG, however, we are not obligated as a service provider to monitor transmitted or stored third-party information or to investigate circumstances that indicate illegal activity.</p>
-                    <p>Obligations to remove or block the use of information under general law remain unaffected. However, liability in this regard is only possible from the point in time at which a concrete infringement of the law becomes known. If we become aware of any such infringements, we will remove this content immediately.</p>
+                    <p>As a service provider, we are responsible for our own content on these pages in accordance with &sect; 7 para. 1 TMG. According to &sect;&sect; 8 to 10 TMG, however, we are not obligated to monitor transmitted or stored third-party information or to investigate circumstances that indicate illegal activity.</p>
+                    <p>Obligations to remove or block the use of information under general law remain unaffected. Liability in this regard is only possible from the point in time at which a concrete infringement becomes known.</p>
                 </section>
-
                 <section class="legal-section">
                     <h2>Liability for Links</h2>
-                    <p>Our website may contain links to external third-party websites over whose content we have no influence. Therefore, we cannot assume any liability for this third-party content. The respective provider or operator of the linked pages is always responsible for the content of the linked pages. The linked pages were checked for possible legal violations at the time of linking. Illegal content was not recognizable at the time of linking.</p>
-                    <p>However, permanent monitoring of the content of linked pages is not reasonable without concrete evidence of an infringement. If we become aware of any infringements, we will remove such links immediately.</p>
+                    <p>Our website may contain links to external third-party websites over whose content we have no influence. The respective provider or operator of the linked pages is always responsible for their content. If we become aware of any infringements, we will remove such links immediately.</p>
                 </section>
-
                 <section class="legal-section">
                     <h2>Copyright</h2>
-                    <p>The content and works created by the site operators on these pages are subject to German copyright law. Duplication, processing, distribution, and any form of commercialization of such material beyond the scope of copyright law shall require the prior written consent of its respective author or creator. Downloads and copies of this site are only permitted for private, non-commercial use.</p>
-                    <p>Insofar as the content on this site was not created by the operator, the copyrights of third parties are respected. In particular, third-party content is identified as such. Should you nevertheless become aware of a copyright infringement, please inform us accordingly. If we become aware of any infringements, we will remove such content immediately.</p>
+                    <p>The content and works created by the site operators on these pages are subject to German copyright law. Duplication, processing, distribution, and any form of commercialization beyond the scope of copyright law require the prior written consent of the respective author or creator.</p>
                 </section>
+            </div>
 
+            <!-- SPANISH (courtesy translation) -->
+            <div class="legal-page__content" data-lang-content="es" style="display:none;">
+                <section class="legal-section">
+                    <h2>Proveedor del servicio</h2>
+                    <p>
+                        Michelle Deerberg<br>
+                        Oradora Motivacional<br>
+                        Musterstra&szlig;e 42<br>
+                        35396 Gie&szlig;en<br>
+                        Alemania
+                    </p>
+                </section>
+                <section class="legal-section">
+                    <h2>Contacto</h2>
+                    <p>
+                        Tel&eacute;fono: +1 (555) 123-4567<br>
+                        Correo electr&oacute;nico: <a href="mailto:hello@michelledeerberg.com">hello@michelledeerberg.com</a><br>
+                        Sitio web: <a href="index.html">www.michelledeerberg.com</a>
+                    </p>
+                </section>
+                <section class="legal-section">
+                    <h2>Informaci&oacute;n fiscal</h2>
+                    <p>
+                        N&uacute;mero de identificaci&oacute;n del IVA seg&uacute;n &sect; 27a UStG:<br>
+                        DE XXXXXXXXX
+                    </p>
+                    <p>
+                        N&uacute;mero fiscal: XXX/XXXX/XXXX<br>
+                        Oficina tributaria: Finanzamt Gie&szlig;en
+                    </p>
+                </section>
+                <section class="legal-section">
+                    <h2>Informaci&oacute;n profesional</h2>
+                    <p>
+                        Profesi&oacute;n: Oradora Motivacional<br>
+                        Autoridad competente: No aplica (Profesi&oacute;n liberal)
+                    </p>
+                </section>
+                <section class="legal-section">
+                    <h2>Responsable del contenido</h2>
+                    <p>
+                        Responsable seg&uacute;n &sect; 18 p&aacute;rr. 2 MStV:<br>
+                        Michelle Deerberg<br>
+                        Musterstra&szlig;e 42<br>
+                        35396 Gie&szlig;en<br>
+                        Alemania
+                    </p>
+                </section>
+                <section class="legal-section">
+                    <h2>Resoluci&oacute;n de conflictos</h2>
+                    <p>La Comisi&oacute;n Europea proporciona una plataforma para la resoluci&oacute;n de litigios en l&iacute;nea: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr</a></p>
+                    <p>No estamos dispuestos ni obligados a participar en procedimientos de resoluci&oacute;n de conflictos ante una junta de arbitraje del consumidor.</p>
+                </section>
+                <section class="legal-section">
+                    <h2>Responsabilidad por el contenido</h2>
+                    <p>Como proveedor de servicios, somos responsables de nuestro propio contenido en estas p&aacute;ginas de acuerdo con el &sect; 7 p&aacute;rr. 1 TMG. Sin embargo, seg&uacute;n los &sect;&sect; 8 a 10 TMG, no estamos obligados a supervisar la informaci&oacute;n de terceros transmitida o almacenada.</p>
+                </section>
+                <section class="legal-section">
+                    <h2>Responsabilidad por enlaces</h2>
+                    <p>Nuestro sitio web puede contener enlaces a sitios web externos de terceros sobre cuyo contenido no tenemos influencia. Si tenemos conocimiento de alguna infracci&oacute;n, eliminaremos dichos enlaces de inmediato.</p>
+                </section>
+                <section class="legal-section">
+                    <h2>Derechos de autor</h2>
+                    <p>El contenido y las obras creados por los operadores del sitio en estas p&aacute;ginas est&aacute;n sujetos a la ley alemana de derechos de autor. La duplicaci&oacute;n, el procesamiento, la distribuci&oacute;n y cualquier forma de comercializaci&oacute;n requieren el consentimiento previo por escrito del autor o creador respectivo.</p>
+                </section>
             </div>
 
             <div class="legal-page__back">
-                <a href="index.html" class="link-arrow"><span>&larr;</span> Back to Home</a>
+                <a href="index.html" class="link-arrow" data-i18n-html="legal_back"><span>&larr;</span> Zurück zur Startseite</a>
             </div>
         </div>
     </main>
@@ -135,26 +275,26 @@
                         <span class="logo-mark">M</span>
                         <span class="logo-text">Michelle Deerberg</span>
                     </a>
-                    <p>Empowering leaders and teams to speak with confidence, clarity, and impact.</p>
+                    <p data-i18n="footer_desc">Inspirierende Vorträge, die Menschen berühren und zum Handeln bewegen.</p>
                 </div>
                 <div class="footer__nav">
-                    <h4>Navigation</h4>
+                    <h4 data-i18n="footer_nav_title">Navigation</h4>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="index.html#services">Services</a></li>
-                        <li><a href="index.html#about">About</a></li>
-                        <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="index.html" data-i18n="nav_home">Startseite</a></li>
+                        <li><a href="index.html#services" data-i18n="nav_services">Leistungen</a></li>
+                        <li><a href="index.html#about" data-i18n="nav_about">Über mich</a></li>
+                        <li><a href="index.html#contact" data-i18n="nav_contact">Kontakt</a></li>
                     </ul>
                 </div>
                 <div class="footer__legal">
-                    <h4>Legal</h4>
+                    <h4 data-i18n="footer_legal_title">Rechtliches</h4>
                     <ul>
-                        <li><a href="impressum.html">Impressum</a></li>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="impressum.html" data-i18n="footer_impressum">Impressum</a></li>
+                        <li><a href="privacy.html" data-i18n="footer_privacy">Datenschutzerklärung</a></li>
                     </ul>
                 </div>
                 <div class="footer__social">
-                    <h4>Follow Me</h4>
+                    <h4 data-i18n="footer_social_title">Folgen Sie mir</h4>
                     <div class="social-links">
                         <a href="#" aria-label="LinkedIn" class="social-link">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -169,11 +309,12 @@
                 </div>
             </div>
             <div class="footer__bottom">
-                <p>&copy; 2025 Michelle Deerberg. All rights reserved.</p>
+                <p>&copy; 2025 Michelle Deerberg. <span data-i18n="footer_rights">Alle Rechte vorbehalten.</span></p>
             </div>
         </div>
     </footer>
 
+    <script src="lang.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

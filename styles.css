@@ -181,7 +181,6 @@ ul {
     padding: 0 var(--container-px);
     display: flex;
     align-items: center;
-    justify-content: space-between;
 }
 
 .header__logo {
@@ -189,6 +188,7 @@ ul {
     align-items: center;
     gap: 0.75rem;
     z-index: 1001;
+    margin-right: auto;
 }
 
 .logo-mark {
@@ -280,6 +280,67 @@ ul {
 .nav__link:hover::after,
 .nav__link--active::after {
     width: 100%;
+}
+
+/* ---------- LANGUAGE SELECTOR ---------- */
+.nav {
+    order: 1;
+}
+
+.lang-selector {
+    order: 2;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    z-index: 1001;
+    margin-left: 1.5rem;
+}
+
+.lang-selector--mobile {
+    display: none;
+}
+
+.lang-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.65rem;
+    background: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.55);
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: all 0.3s var(--ease);
+    white-space: nowrap;
+}
+
+.lang-btn:hover {
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.lang-btn--active {
+    color: var(--white);
+    border-color: var(--gold);
+    background: rgba(201, 169, 92, 0.12);
+}
+
+.lang-flag {
+    flex-shrink: 0;
+    border-radius: 2px;
+    display: block;
+}
+
+.lang-label {
+    line-height: 1;
+}
+
+.hamburger {
+    order: 3;
 }
 
 /* ---------- HERO ---------- */
@@ -1313,6 +1374,22 @@ ul {
         display: flex;
     }
 
+    .lang-selector {
+        margin-left: 0;
+        margin-right: 0.25rem;
+    }
+
+    .lang-selector .lang-label {
+        display: none;
+    }
+
+    .lang-btn {
+        padding: 0.4rem 0.5rem;
+        min-width: 36px;
+        min-height: 36px;
+        justify-content: center;
+    }
+
     .nav {
         position: fixed;
         top: 0;
@@ -1321,6 +1398,7 @@ ul {
         height: 100vh;
         background: var(--navy);
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
         transition: right 0.4s var(--ease);
@@ -1328,6 +1406,16 @@ ul {
 
     .nav--open {
         right: 0;
+    }
+
+    .nav--open .lang-selector--mobile {
+        display: flex;
+        justify-content: center;
+        margin-top: 2rem;
+    }
+
+    .lang-selector--mobile .lang-label {
+        display: inline;
     }
 
     .nav__list {

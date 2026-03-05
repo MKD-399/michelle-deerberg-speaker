@@ -4,6 +4,100 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    // ---------- LANGUAGE SYSTEM ----------
+    function t(key) {
+        const lang = document.documentElement.lang || 'de';
+        return (TRANSLATIONS[lang] && TRANSLATIONS[lang][key]) ||
+               (TRANSLATIONS['de'] && TRANSLATIONS['de'][key]) || key;
+    }
+
+    function setLanguage(lang) {
+        if (!TRANSLATIONS[lang]) return;
+
+        // Update html lang attribute
+        document.documentElement.lang = lang;
+
+        // Update page title & meta description
+        document.title = TRANSLATIONS[lang].page_title || document.title;
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc && TRANSLATIONS[lang].meta_desc) {
+            metaDesc.setAttribute('content', TRANSLATIONS[lang].meta_desc);
+        }
+
+        // Update data-i18n elements (textContent)
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (TRANSLATIONS[lang][key] !== undefined) {
+                el.textContent = TRANSLATIONS[lang][key];
+            }
+        });
+
+        // Update data-i18n-html elements (innerHTML)
+        document.querySelectorAll('[data-i18n-html]').forEach(el => {
+            const key = el.getAttribute('data-i18n-html');
+            if (TRANSLATIONS[lang][key] !== undefined) {
+                el.innerHTML = TRANSLATIONS[lang][key];
+            }
+        });
+
+        // Update data-i18n-placeholder elements
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+            const key = el.getAttribute('data-i18n-placeholder');
+            if (TRANSLATIONS[lang][key] !== undefined) {
+                el.setAttribute('placeholder', TRANSLATIONS[lang][key]);
+            }
+        });
+
+        // Update data-lang-content sections (show/hide for legal pages)
+        document.querySelectorAll('[data-lang-content]').forEach(el => {
+            el.style.display = el.getAttribute('data-lang-content') === lang ? '' : 'none';
+        });
+
+        // Update active lang buttons (both desktop and mobile)
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('lang-btn--active', btn.getAttribute('data-lang') === lang);
+        });
+
+        // Save preference
+        localStorage.setItem('preferredLanguage', lang);
+    }
+
+    function getInitialLanguage() {
+        const saved = localStorage.getItem('preferredLanguage');
+        if (saved && TRANSLATIONS[saved]) return saved;
+
+        const browserLang = (navigator.language || '').split('-')[0];
+        if (TRANSLATIONS[browserLang]) return browserLang;
+
+        return 'de';
+    }
+
+    // Clone lang buttons into mobile nav
+    const langSelector = document.getElementById('langSelector');
+    const langSelectorMobile = document.getElementById('langSelectorMobile');
+
+    if (langSelector && langSelectorMobile) {
+        langSelectorMobile.innerHTML = langSelector.innerHTML;
+    }
+
+    // Attach click handlers to all lang buttons (desktop + mobile)
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            setLanguage(btn.getAttribute('data-lang'));
+        });
+    });
+
+    // Apply initial language
+    const initialLang = getInitialLanguage();
+    if (initialLang !== 'de') {
+        setLanguage(initialLang);
+    } else {
+        // Mark the correct button as active
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('lang-btn--active', btn.getAttribute('data-lang') === 'de');
+        });
+    }
+
     // ---------- HEADER SCROLL ----------
     const header = document.getElementById('header');
 
@@ -143,14 +237,13 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
 
         const btn = form.querySelector('.btn');
-        const originalText = btn.textContent;
-        btn.textContent = 'Message Sent!';
+        btn.textContent = t('form_sent');
         btn.style.background = '#2d6a4f';
         btn.style.borderColor = '#2d6a4f';
         btn.style.color = '#fff';
 
         setTimeout(() => {
-            btn.textContent = originalText;
+            btn.textContent = t('form_submit');
             btn.style.background = '';
             btn.style.borderColor = '';
             btn.style.color = '';
@@ -199,7 +292,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (cookieOptions) {
                     const isVisible = cookieOptions.style.display !== 'none';
                     cookieOptions.style.display = isVisible ? 'none' : 'flex';
-                    cookieCustomize.textContent = isVisible ? 'Customize' : 'Save Preferences';
+                    cookieCustomize.textContent = isVisible ? t('cookie_customize') : t('cookie_save');
 
                     // If saving preferences
                     if (isVisible) {
@@ -220,7 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 e.preventDefault();
                 localStorage.removeItem('cookieConsent');
                 if (cookieOptions) cookieOptions.style.display = 'none';
-                if (cookieCustomize) cookieCustomize.textContent = 'Customize';
+                if (cookieCustomize) cookieCustomize.textContent = t('cookie_customize');
                 cookieBanner.classList.add('cookie-banner--visible');
             });
         }
