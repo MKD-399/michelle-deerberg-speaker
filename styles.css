@@ -12,20 +12,20 @@
 }
 
 :root {
-    /* Colors */
-    --navy:       #0b1d3a;
-    --navy-light: #132c55;
-    --gold:       #c9a84c;
-    --gold-light: #e2c97e;
-    --cream:      #faf8f4;
+    /* Colors — warm brown & gold palette (inspired by top-headspa.de) */
+    --navy:       #1a1a1a;
+    --navy-light: #2a2a2a;
+    --gold:       #c9a95c;
+    --gold-light: #d4b978;
+    --cream:      #faf6f0;
     --white:      #ffffff;
-    --gray-100:   #f5f3ef;
-    --gray-200:   #e8e4dd;
-    --gray-400:   #a8a29e;
-    --gray-600:   #6b6560;
-    --gray-800:   #3a3632;
-    --text:       #2c2825;
-    --text-light: #6b6560;
+    --gray-100:   #f5f1eb;
+    --gray-200:   #e5ddd3;
+    --gray-400:   #a89a8a;
+    --gray-600:   #6e6054;
+    --gray-800:   #3d3530;
+    --text:       #2a2420;
+    --text-light: #6e6054;
 
     /* Typography */
     --font-heading: 'Playfair Display', Georgia, serif;
@@ -127,7 +127,7 @@ ul {
     background: var(--gold-light);
     border-color: var(--gold-light);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(201, 168, 76, 0.35);
+    box-shadow: 0 6px 20px rgba(201, 169, 92, 0.4);
 }
 
 .btn--secondary {
@@ -140,7 +140,7 @@ ul {
     background: var(--navy);
     color: var(--white);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(11, 29, 58, 0.2);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
 .link-arrow {
@@ -169,10 +169,10 @@ ul {
 }
 
 .header--scrolled {
-    background: rgba(11, 29, 58, 0.95);
+    background: rgba(26, 26, 26, 0.95);
     backdrop-filter: blur(12px);
     padding: 0.75rem 0;
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
 }
 
 .header__container {
@@ -299,9 +299,9 @@ ul {
     inset: 0;
     background: linear-gradient(
         180deg,
-        rgba(11, 29, 58, 0.75) 0%,
-        rgba(11, 29, 58, 0.6) 50%,
-        rgba(11, 29, 58, 0.85) 100%
+        rgba(26, 26, 26, 0.75) 0%,
+        rgba(32, 29, 26, 0.6) 50%,
+        rgba(26, 26, 26, 0.85) 100%
     );
 }
 
@@ -504,8 +504,8 @@ ul {
 
 .service-card--featured {
     border-color: var(--gold);
-    background: linear-gradient(180deg, rgba(201, 168, 76, 0.04) 0%, var(--white) 100%);
-    box-shadow: 0 8px 30px rgba(201, 168, 76, 0.12);
+    background: linear-gradient(180deg, rgba(201, 169, 92, 0.06) 0%, var(--white) 100%);
+    box-shadow: 0 8px 30px rgba(201, 169, 92, 0.15);
 }
 
 .service-card__badge {
